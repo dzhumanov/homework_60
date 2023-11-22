@@ -1,4 +1,3 @@
-import React from "react";
 import { useState, useCallback, useEffect} from "react";
 import ChatForm from "./Components/ChatForm/ChatForm";
 import Messages from "./Components/Message/Messages";
