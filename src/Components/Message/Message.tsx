@@ -8,7 +8,7 @@ const Message: React.FC<MessageProps> = ({ author, message, datetime }) => {
   let secondsString: string = seconds < 10 ? `0${seconds}` : `${seconds}`;
 
   return (
-    <Card className="mb-3">
+    <Card className="mb-3 mt-3">
       <Card.Header className="d-flex justify-content-between">
         <h4>{author}</h4>
         <h4>

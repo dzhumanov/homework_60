@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useCallback, useEffect, useRef } from "react";
+import { useState, useCallback, useEffect} from "react";
 import ChatForm from "./Components/ChatForm/ChatForm";
 import Messages from "./Components/Message/Messages";
 import { MessageProps } from "./types";
@@ -23,15 +23,6 @@ function App() {
     void fetchMessages(url);
   }, [fetchMessages]);
 
-  const messagesContainerRef = React.useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (messagesContainerRef.current) {
-      messagesContainerRef.current.scrollTop =
-        messagesContainerRef.current.scrollHeight;
-    }
-  }, [messages]);
-
   const startInterval = () => {
     const id = setInterval(() => {
       void fetchMessages(url);
@@ -54,18 +45,11 @@ function App() {
       stopInterval();
     };
   }, [fetchMessages]);
-  
 
   return (
-    <div className="container w-50">
-      <div
-        className="message-wrapper"
-        ref={messagesContainerRef}
-        style={{ maxHeight: "550px", overflowY: "auto" }}
-      >
+    <div className="container w-50 pt-3">
         <Messages Messages={messages || []} />
-      </div>
-      <ChatForm />
+      <ChatForm onStopInterval={stopInterval} />
     </div>
   );
 }
